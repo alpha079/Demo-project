@@ -5,6 +5,7 @@ const todoRoute = require('./routes/todos')
 const methodOverride = require('method-override') 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+var PORT = process.env.PORT || 5000
 app.set("view engine","ejs");
 
 
@@ -34,7 +35,7 @@ app.patch('/:id', async(req, res) => {
 
 db.sync()
 .then(() => {
-    app.listen(5000)
+    app.listen(PORT)
 }).catch((err) => {
     console.error(err)
 })
